@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Splash",
+    "description": "Get a splash of color on your browser new tab page with this speedy customizable extension",
+    "version": "2.2",
+    "chrome_url_overrides": {
+        "newtab": "newtab.html"
+    },
+    "action": {
+        "default_title": "New Tab"
+    },
+    "---PERMISSIONS---": {},
+    "homepage_url": "https://fxzfun.com/splash",
+    "icons": {
+        "16": "imgs/splash (16x16).png",
+        "64": "imgs/splash (64x64).png",
+        "128": "imgs/splash (128x128).png",
+        "512": "imgs/splash (512x512).png"
+    }
+}

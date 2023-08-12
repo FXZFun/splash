@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Icons&family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Roboto";
+}
+
+body {
+    background-color: #212121;
+    color: #fefefe;
+    text-align: center;
+    margin-bottom: 65px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+#time {
+    font-size: 13em;
+    margin: auto;
+    margin-top: 50px;
+    color: #fafafa;
+    border-radius: 20px;
+    padding: 3px;
+    width: fit-content;
+    font-family: monospace;
+}
+
+#date {
+    font-size: 2.5em;
+    margin: 0px auto;
+    color: #fafafa;
+    border-radius: 20px;
+    padding: 3px;
+    width: fit-content;
+}
+
+
+.currentWeather {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-family: sans-serif;
+    margin: 0;
+    color: white;
+    font-weight: bold;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+.widgets {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    margin: 0;
+    color: white;
+    text-align: right;
+    min-width: 20%;
+}
+
+.currentWeather span,
+.widgets span {
+    padding: 5px;
+}
+
+.wi {
+    padding: 10px 5px 10px 0;
+}
+
+#menu {
+    border: none;
+    width: 300px;
+    height: 100%;
+    box-shadow: 0 0 10px #21212140;
+    background-color: #fefefe;
+    text-align: left;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    font-family: 'Roboto';
+    font-size: 120%;
+    padding: 1em 2em;
+    overflow: auto;
+    color: #212121;
+}
+
+#menu.show {
+    animation: 0.15s ease-out slide-left forwards;
+}
+
+#menu.hide {
+    animation: 0.15s ease-out slide-right;
+}
+
+.header button {
+    background: unset;
+    border: none;
+    padding: 10px;
+    float: right;
+    margin: 0.5em;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    display: inline-block;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    position: relative;
+}
+
+.marketplace li p {
+    flex-basis: 100%;
+}
+
+input {
+    height: 2.5rem;
+    width: 100%;
+    border: 1px solid #757575;
+    border-radius: 6px;
+    color: #212121;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3f51b5;
+    color: #3f51b5;
+}
+
+input:focus+.placeholder-text .text,
+:not(:placeholder-shown)+.placeholder-text .text {
+    background-color: white;
+    font-size: 0.7rem;
+    color: #3f51b5;
+    transform: translate(-5%, -170%);
+    padding: 0 0.3rem;
+    border-color: #3f51b5;
+}
+
+input:not(:focus)+.placeholder-text .text {
+    color: #757575;
+}
+
+input:focus+.placeholder-text .text {
+    border-color: #3f51b5;
+    color: #3f51b5;
+}
+
+.placeholder-text {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 3px solid transparent;
+    background-color: transparent;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+
+.text {
+    font-size: 0.9rem;
+    background-color: white;
+    transform: translate(0);
+    color: #757575;
+    transition: transform 0.15s ease-out, font-size 0.15s ease-out,
+        background-color 0.2s ease-out, color 0.15s ease-out;
+}
+
+input,
+.placeholder-text {
+    font-size: 0.9rem;
+    padding: 0 0.8rem;
+}
+
+button#settingsBtn {
+    background: none;
+    border: none;
+    color: #ffffffaa;
+    position: fixed;
+    top: 30px;
+    right: 25px;
+}
+
+input[type=checkbox]+label:before {
+    content: "toggle_off";
+    font-family: "Material Icons";
+    color: #787878;
+    font-size: 48px;
+}
+
+input[type=checkbox]:checked+label:before {
+    content: "toggle_on";
+    font-family: "Material Icons";
+    color: #212121;
+}
+
+input#timeFormat+label:before {
+    content: "";
+    background-image: url(/imgs/toggle24.svg);
+    width: 1em;
+    height: 0.6em;
+    background-size: 1em;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+input#timeFormat:checked+label:before {
+    background-image: url(/imgs/toggle12.svg);
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+.autocompleteBox {
+    border: 1px solid #bdbdbd;
+    font-family: "Roboto";
+    background-color: #fafafa;
+    z-index: 999;
+    color: #212121;
+    max-height: 50vh;
+    overflow: auto;
+}
+
+.autocompleteBox img {
+    height: 16px;
+}
+
+.grayText {
+    color: #787878;
+}
+
+.autocomplete-place {
+    font-family: "Roboto";
+    padding: 5px;
+    cursor: pointer;
+}
+
+.theme {
+    height: 100px;
+    width: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.themes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.theme p {
+    backdrop-filter: brightness(0.7);
+    height: 100%;
+    width: 100%;
+    color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    font-size: 1.1em;
+}
+
+i.material-icons {
+    vertical-align: middle;
+}
+
+.open-source-tag {
+    text-align: center;
+    width: 100%;
+}
+
+.open-source-tag a {
+    text-decoration: none;
+    color: #212121;
+}
+
+::-webkit-scrollbar {
+    background-color: lightgray;
+    width: .6em;
+    height: .5em
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: .25em
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, .4)
+}
+
+@keyframes slide-left {
+    from {
+        right: -300px;
+    }
+
+    to {
+        right: 0;
+    }
+}
+
+@keyframes slide-right {
+    from {
+        right: 0;
+    }
+
+    to {
+        right: -300px;
+    }
+}

@@ -1,0 +1,43 @@
+#widget-QuickLinks.gallery {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#widget-QuickLinks {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: auto;
+}
+
+#widget-QuickLinks.gallery .card a, #widget-QuickLinks.gallery .card {
+    color: #fafafa;
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: inline-block;
+}
+
+#widget-QuickLinks.gallery .card {
+    backdrop-filter: blur(5px) brightness(0.7);
+    border-radius: 12px;
+    margin: 0 5px;
+    padding: 5px;
+}
+
+#widget-QuickLinks.gallery .card a img {
+    height: 32px;
+}
+
+#widget-QuickLinks.gallery .card a p {
+    overflow: hidden;
+    width: 70px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0.2em;
+    display: block;
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/weather-icons.min.css">
+    <link rel="shortcut icon" href="imgs/splash (128x128).png">
+    <script type="module" src="newtab.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1 id="time"></h1>
+        <h2 id="date"></h2>
+
+        <p class="currentWeather">
+            <i id="currentWeatherIcon" class="wi wi-day-rain"></i>
+            <span id="currentWeatherTemperature">--</span>°
+        </p>
+        <p class="widgets">
+            
+        </p>
+        <button id="settingsBtn"><i class="material-icons">menu</i></button>
+    </main>
+
+    <div id="menu">
+        <div class="settings header">
+            <h2 style="display: inline-block;">Settings</h2>
+            <button><i class="material-icons">close</i></button>
+        </div>
+
+        <ul>
+            <li>
+                <input type="text" id="settingsAddressInput" placeholder=" " autocomplete="off" value="">
+                <label class="placeholder-text" for="settingsAddressInput">
+                    <div class="text">Weather Location</div>
+                </label>
+            </li>
+            <li style="flex-direction: row;">
+                <h3>Time Format</h3>
+                <input type="checkbox" id="timeFormat" autocomplete="off">
+                <label for="timeFormat"></label>
+            </li>
+            <li>
+                <h3 style="width:100%;text-align:left;">Theme</h3>
+                <div class="themes">
+                    <div class="theme" id="springTheme" style="background-image: url('/backgrounds/spring (10).webp');">
+                        <p>Spring</p>
+                    </div>
+                    <div class="theme" id="summerTheme" style="background-image: url('/backgrounds/summer (2).webp');">
+                        <p>Summer</p>
+                    </div>
+                    <div class="theme" id="fallTheme" style="background-image: url('/backgrounds/fall (1).webp');">
+                        <p>Fall</p>
+                    </div>
+                    <div class="theme" id="winterTheme" style="background-image: url('/backgrounds/winter (2).webp');">
+                        <p>Winter</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <h2>Widgets</h2>
+        <ul class="marketplace">
+        </ul>
+
+        <hr>
+        <p class="open-source-tag"><a href="https://github.com/FXZFun/splash"><i class="material-icons">code</i> Open Sourced on Github</a></p>
+    </div>
+</body>
+
+</html>

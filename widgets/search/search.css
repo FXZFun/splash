@@ -1,0 +1,18 @@
+input#searchTerm {
+    position: fixed;
+    left: 25%;
+    right: 25%;
+    width: 50%;
+    top: 40%;
+    padding: 20px;
+    border: none;
+    color: #fafafa;
+    height: 3rem;
+    backdrop-filter: blur(5px) brightness(0.7);
+    border-radius: 1rem;
+    background: none;
+}
+
+input#searchTerm::placeholder {
+    color: #dddddd;
+}

@@ -1,0 +1,11 @@
+#widget-BibleVerses {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 120%;
+    text-align: center;
+    backdrop-filter: blur(5px) brightness(0.7);
+    border-radius: 12px;
+    padding: 0 20px;
+}
