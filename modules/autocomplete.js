@@ -24,14 +24,20 @@ export class Autocomplete {
     }
 
     async autoComplete(input) {
-        var fetchObj = await fetch("https://api.geocode.city/autocomplete?limit=10&q=" + input);
-        var json = await fetchObj.json();
+        let fetchObj = await fetch("https://api.geocode.city/autocomplete?limit=10&q=" + input);
+        let json = await fetchObj.json();
         this.autoCompleteBox.innerHTML = "";
         json.forEach(prediction => {
             this.addItem(prediction.latitude, prediction.longitude, prediction.name + (prediction.region ? ", " + prediction.region : ""), prediction.country);
         });
-        var small = document.createElement("small");
-        small.innerHTML = "Powered by <a href='https://geocode.city/' target='_blank'>geocode.city</a>";
+        let small = document.createElement("small");
+        small.innerText = "Powered by ";
+        
+        let a = document.createElement("a");
+        a.target = "_blank";
+        a.href = "https://geocode.city";
+        a.innerText = "geocode.city";
+        small.appendChild(a);
         this.autoCompleteBox.appendChild(small);
     }
 
@@ -70,7 +76,7 @@ export class Autocomplete {
     hideAutocompleteBox() {
         setTimeout(() => {
             this.autoCompleteBox.style.display = "none";
-        }, 100);
+        }, 250);
     }
 
     showAutocompleteBox() {

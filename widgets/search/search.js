@@ -25,17 +25,38 @@ export class Search {
         } else {
             engine = {"name": "Brave", "url": "https://search.brave.com/search?q={search_term}"}
         }
-        WidgetHelper.getContainer(this).innerHTML = `<form id="searchForm"><input type="text" placeholder="Search the web with ${engine.name}..." id="searchTerm" autocomplete="off"></form>`;
+        let container = WidgetHelper.getContainer(this);
+        let form = document.createElement("form");
+        form.id = "searchForm";
+
+        let input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = "Search the web with " + engine.name + "...";
+        input.id = "searchTerm";
+        input.autocomplete = "off";
+        form.appendChild(input);
+        container.appendChild(form);
+
         document.getElementById("searchForm").onsubmit = (event) => {
             event.preventDefault();
             location.href = engine.url.replaceAll("{search_term}", document.getElementById("searchTerm").value);
             return false;
         }
-        var settingsHtml = "";
+
+        let settingsContainer = WidgetHelper.getSettingsContainer(this);
+        settingsContainer.innerText = "Select the search engine you prefer: ";
+
+        let select = document.createElement("select");
+        select.id = "searchEngine";
         Object.keys(this.engines).forEach((key) => {
-            settingsHtml += `<option value="${key}" ${key == engine.name.toLowerCase() ? "selected": ""}>${this.engines[key].name}</option>`;
+            let option = document.createElement("option");
+            option.value = key;
+            if (key == engine.name.toLowerCase()) option.selected = true;
+            option.innerText = this.engines[key].name;
+            select.appendChild(option);
+
         });
-        WidgetHelper.getSettingsContainer(this).innerHTML = `Select the search engine you prefer: <select id="searchEngine">${settingsHtml}</select>`;
+        settingsContainer.appendChild(select);
         this.engineChanged = this.engineChanged.bind(this);
         document.getElementById("searchEngine").addEventListener("change", this.engineChanged);
         WidgetHelper.addStyle(this);
@@ -45,17 +66,36 @@ export class Search {
         var engine = this.engines[document.getElementById("searchEngine").value];
         this.storage["searchEngine"] = engine;
         WidgetHelper.setStorage(this, this.storage);
-        WidgetHelper.getContainer(this).innerHTML = `<form id="searchForm"><input type="text" placeholder="Search the web with ${engine.name}..." id="searchTerm" autocomplete="off"></form>`;
+        let container = WidgetHelper.getContainer(this);
+        let form = document.createElement("form");
+        form.id = "searchForm";
+
+        let input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = "Search the web with " + engine.name + "...";
+        input.id = "searchTerm";
+        input.autocomplete = "off";
+        form.appendChild(input);
+        container.appendChild(form);
         document.getElementById("searchForm").onsubmit = () => {
             event.preventDefault();
             location.href = engine.url.replaceAll("{search_term}", document.getElementById("searchTerm").value);
             return false;
         }
-        var settingsHtml = "";
+        let settingsContainer = WidgetHelper.getSettingsContainer(this);
+        settingsContainer.innerText = "Select the search engine you prefer: ";
+
+        let select = document.createElement("select");
+        select.id = "searchEngine";
         Object.keys(this.engines).forEach((key) => {
-            settingsHtml += `<option value="${key}" ${key == engine.name.toLowerCase() ? "selected": ""}>${this.engines[key].name}</option>`;
+            let option = document.createElement("option");
+            option.value = key;
+            if (key == engine.name.toLowerCase()) option.selected = true;
+            option.innerText = this.engines[key].name;
+            select.appendChild(option);
+
         });
-        WidgetHelper.getSettingsContainer(this).innerHTML = `Select the search engine you prefer: <select id="searchEngine">${settingsHtml}</select>`;
+        settingsContainer.appendChild(select);
         this.engineChanged = this.engineChanged.bind(this);
         document.getElementById("searchEngine").addEventListener("change", this.engineChanged);
     }

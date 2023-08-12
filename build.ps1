@@ -1,6 +1,7 @@
 param (
     [string]$browser = "chrome",
-    [string]$version = "3.0"
+    [string]$version = "3.0",
+    [switch]$commit = $false
 )
 
 
@@ -62,4 +63,6 @@ if (Test-Path $sourceFolder) {
 git restore manifest.json
 git restore newtab.js
 git add "releases/splash-$version-$browser.zip"
-git commit -m "build release version $version for $browser"
+if ($commit) {
+    git commit -m "build release version $version for $browser"
+}

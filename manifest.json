@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Splash",
     "description": "Get a splash of color on your browser new tab page with this speedy customizable extension",
-    "version": "2.2",
+    "version": "---VERSION---",
     "chrome_url_overrides": {
         "newtab": "newtab.html"
     },

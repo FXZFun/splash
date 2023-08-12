@@ -2,7 +2,7 @@ import { WidgetHelper } from "../../modules/widget-helper.js";
 
 export class BibleVerses {
     static load() {
-        WidgetHelper.create(this, "Bible Verses", "Display a random bible verse from the EHV, courtesy of the <a href='https://wartburgproject.org/'>Wartbug Project</a>");
+        WidgetHelper.create(this, "Bible Verses", "Display a random bible verse from the EHV");
     }
 
     async enable() {
