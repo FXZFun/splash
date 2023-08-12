@@ -14,10 +14,36 @@ export class CustomWallpapers {
             let randomBackground = this.storage.wallpapers[Math.floor(Math.random() * this.storage.wallpapers.length)];
             this.setBackground(randomBackground);
         }
-        WidgetHelper.getSettingsContainer(this).innerHTML = `<p>Seperate Wallpaper URLs with a comma.</p><div style="position:relative;"><input type="text" id="${this.id}-urls" placeholder=" " autocomplete="off" value=${this.storage.hasOwnProperty("wallpapers") ? this.storage.wallpapers.join(",") : ""}>
-        <label class="placeholder-text" for="${this.id}-urls">
-            <div class="text">Wallpaper URLs</div>
-        </label></div>`;
+
+        let container = WidgetHelper.getSettingsContainer(this);
+        let p = document.createElement("p");
+        p.innerText = "Seperate Wallpaper URLs with a comma";
+        container.appendChild(p);
+
+        let div = document.createElement("div");
+        div.style.position = "relative";
+
+        let input = document.createElement("input");
+        input.type = "text";
+        input.id = this.id + "-urls";
+        input.placeholder = " ";
+        input.autocomplete = "off";
+        input.value = this.storage.hasOwnProperty("wallpapers") ? this.storage.wallpapers.join(",") : "";
+        div.appendChild(input);
+
+        let label = document.createElement("label");
+        label.classList = "placeholder-text";
+        label.for = this.id + "-urls";
+
+        let div2 = document.createElement("div");
+        div2.classList = "text";
+        div2.innerText = "Wallpaper URLs";
+        label.appendChild(div2);
+        
+        div.appendChild(label);
+
+        container.appendChild(div);
+
         this.updateStorage = this.updateStorage.bind(this);
         document.getElementById(this.id + "-urls").onchange = this.updateStorage;
     }

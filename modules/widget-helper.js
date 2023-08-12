@@ -12,10 +12,24 @@ export class WidgetHelper {
         // add settings item
         var li = document.createElement("li");
         li.style.flexDirection = "row";
-        li.innerHTML = `<h3>${name}</h3>
-                        <input type="checkbox" id="widgets-enabled-${id}" ${enabled ? "checked" : ""}>
-                        <label for="widgets-enabled-${id}"></label>
-                        <p>${description}</p>`;
+        let h3 = document.createElement("h3");
+        h3.innerText = name;
+        li.appendChild(h3);
+
+        let input = document.createElement("input");
+        input.type = "checkbox";
+        input.id = "widgets-enabled-" + id;
+        if (enabled) input.checked = true;
+        li.appendChild(input);
+
+        let label = document.createElement("label");
+        label.setAttribute("for", "widgets-enabled-" + id);
+        li.appendChild(label);
+
+        let p = document.createElement("p");
+        p.innerText = description;
+        li.appendChild(p);
+
         this.marketplaceArea.appendChild(li);
 
         // adds widget settings
