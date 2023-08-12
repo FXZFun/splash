@@ -28,7 +28,7 @@ $newContent | Set-Content -Path "newtab.js"
 # Create zip artifact
 $sourceFolder = "../splash"
 $destinationZip = "../splash/releases/splash-" + $version + "-" + $browser + ".zip"
-$excludeFiles = @(".gitignore", "deploy.ps1")
+$excludeFiles = @(".gitignore", "build.ps1")
 $excludeFolders = @(".git", ".github", "releases")
 
 if (Test-Path $sourceFolder) {
