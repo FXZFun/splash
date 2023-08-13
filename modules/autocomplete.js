@@ -42,10 +42,24 @@ export class Autocomplete {
     }
 
     addItem(lat, lng, bigText, smallText) {
-        var div = document.createElement("div");
+        let div = document.createElement("div");
         div.dataset.placeLat = lat;
         div.dataset.placeLng = lng;
-        div.innerHTML = `<p class="autocomplete-place"><span>${bigText}</span> <span class="grayText">${smallText}</span></p>`;
+
+        let p = document.createElement("p");
+        p.classList = "autocomplete-place";
+
+        let span1 = document.createElement("span");
+        span1.innerText = bigText + " ";
+
+        let span2 = document.createElement("span");
+        span2.classList = "grayText";
+        span2.innerText = smallText;
+
+        p.appendChild(span1);
+        p.appendChild(span2);
+        div.appendChild(p);
+        
         this.onClicked = this.onClicked.bind(this);
         div.onclick = this.onClicked;
         this.autoCompleteBox.appendChild(div);

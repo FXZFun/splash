@@ -109,7 +109,7 @@ export class WidgetHelper {
     }
 
     static addStyle(instance) {
-        const id = instance.constructor.name;
+        const id = instance.constructor.name.toLowerCase();
         var link = document.createElement("link");
         link.rel = "stylesheet";
         link.href = "/widgets/" + id + "/" + id + ".css";
